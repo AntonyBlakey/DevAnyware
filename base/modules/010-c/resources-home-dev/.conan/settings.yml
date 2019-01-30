@@ -1,0 +1,10 @@
+os: [Windows, Linux, MacOS]
+os_build: [Linux]
+arch: [x86, x86_64]
+arch_build: [x86_64]
+compiler:
+  clang:
+    version: [8.0]
+    libcxx: [libc++, libstdc++11]
+build_type: [Debug, Release]
+cppstd: [None, 17, gnu17, 20, gnu20]

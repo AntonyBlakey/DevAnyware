@@ -1,0 +1,57 @@
+FROM ubuntu:18.10
+
+ENV LC_ALL=C.UTF-8
+
+VOLUME [ "/host" ]
+
+RUN echo 'root:root' | chpasswd \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+    # These two needed specifically for powershell
+    libicu60 libssl1.0.0 \
+    gnupg2 apt-transport-https ca-certificates \
+    sudo zsh tmux \
+    psmisc htop curl wget jq sed gpp gawk xz-utils neovim unzip less git patch ripgrep ranger \
+    && rm -rf /var/lib/apt/lists \
+    && git config --global http.sslVerify false \
+    && usermod -s /usr/bin/zsh root \
+    # install docker client
+    && curl --insecure -s https://download.docker.com/linux/static/stable/x86_64/docker-18.09.0.tgz \
+    | tar zxf - --strip-components=1 -C /usr/bin docker/docker \
+    # install powershell
+    && mkdir /powershell \
+    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v6.1.2/powershell-6.1.2-linux-x64.tar.gz \
+    | tar zx -C /powershell \
+    && chmod +x /powershell/pwsh \
+    && ln -s /powershell/pwsh /usr/bin/pwsh \
+    # create dev user
+    && useradd -m -s /usr/bin/zsh dev \
+    && echo 'ALL ALL = (ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers \
+    # initialize zsh path
+    && echo 'export path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)' >> /etc/zsh/zshenv
+
+# Need to do this before the resources are copied over
+SHELL ["/usr/bin/pwsh", "-c"]
+RUN   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted \
+    # The line above doesn't work at the moment,
+    # so I need to use -Force with Install-Module
+    ; Install-Module -Name posh-git -Force \
+    ; Install-Module -Name oh-my-posh -Force  
+
+SHELL ["/usr/bin/zsh", "-c"]
+
+COPY --chown=dev:dev resources-home-dev/ /home/dev/
+
+WORKDIR /home/dev/work
+CMD ["tmux", "-2"]
+
+USER dev
+
+RUN git config --global http.sslVerify false \
+    && git clone -q https://github.com/tarjoilija/zgen.git ~/.zgen \
+    # Sourcing .zshrc forces it to initialize and download the modules
+    && source ~/.zshrc \
+    && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
+    && ~/.fzf/install --all \
+    && git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
+    && TMUX_PLUGIN_MANAGER_PATH='~/.tmux/plugins' ~/.tmux/plugins/tpm/bin/install_plugins

@@ -1,0 +1,1 @@
+export path=(/i3-gaps/bin $path)

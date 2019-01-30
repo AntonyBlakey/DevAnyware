@@ -1,0 +1,27 @@
+<esc>        - Cancel Command Mode
+ctrl-g       - Cancel Command Mode
+
+:            - Show app menu 
+<space>      - Show app menu
+
+c            - Close selection (such as this window!)
+
+<return>     - Show focus keys
+h/j/k/l      - Focus left/down/up/right. You can also use Super-h/j/k/l directly
+u            - Focus on parent i.e. [U]p the tree
+d            - Focus on child  i.e. [D]own the tree
+1..9/0       - Switch to workspace 1..10
+
+|            - Add a new app to the left of the current selection
+_            - Add a new app below the current selection
+
+r            - rotate the current selection through horizontal, vertical, tabbed, and stacked layouts
+
+H/J/K/L      - Move the current selection left/down/up/right
+shift-1..9/0 - Move the current selection to workspace 1..10
+
+-            - Decrease selection height
++            - Increase selection height
+<            - Decrease selection width
+>            - Increase selection width
+=            - Toggle selection full screen

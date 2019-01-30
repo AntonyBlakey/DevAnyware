@@ -1,0 +1,1 @@
+export path=(/macos/bin $path)

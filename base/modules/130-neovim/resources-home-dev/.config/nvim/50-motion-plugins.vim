@@ -1,0 +1,7 @@
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'unblevable/quick-scope'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'zeroknight/vim-signjump'

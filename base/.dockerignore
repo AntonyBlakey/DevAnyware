@@ -1,0 +1,4 @@
+local-scripts
+build.sh
+build.log
+*.docker

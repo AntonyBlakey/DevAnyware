@@ -1,0 +1,47 @@
+set(CMAKE_SYSTEM_NAME Windows)
+set(CMAKE_SYSTEM_PROCESSOR x86_64)
+
+set(_tc_triple "x86_64-pc-win32")
+set(_tc_arch "x64")
+
+set(_tc_msvc_dir "/windows/msvc/14.16.27023")
+set(_tc_sdk_headers_dir "/windows/sdk/Include/10.0.17763.0")
+set(_tc_sdk_libs_dir "/windows/sdk/Lib/10.0.17763.0")
+
+set(_tc_asm_flags "${_tc_asm_flags} --target=${_tc_triple}")
+
+set(_tc_c_flags "${_tc_c_flags} --target=${_tc_triple}")
+
+set(_tc_c_flags "${_tc_c_flags} -fms-compatibility")
+set(_tc_c_flags "${_tc_c_flags} -fms-compatibility-version=1910")
+set(_tc_c_flags "${_tc_c_flags} -fdelayed-template-parsing")
+set(_tc_c_flags "${_tc_c_flags} -fms-extensions")
+
+set(_tc_c_flags "${_tc_c_flags} /EHsc")
+
+ # Because I don't yet have an ms-compatible RC that works
+ # during cmake's configuration process
+set(_tc_link_flags "${_tc_link_flags} /manifest:no")
+
+set(_tc_c_flags "${_tc_c_flags} /imsvc ${_tc_msvc_dir}/include")
+set(_tc_c_flags "${_tc_c_flags} /imsvc ${_tc_sdk_headers_dir}/ucrt")
+set(_tc_c_flags "${_tc_c_flags} /imsvc ${_tc_sdk_headers_dir}/shared")
+set(_tc_c_flags "${_tc_c_flags} /imsvc ${_tc_sdk_headers_dir}/um")
+
+set(_tc_link_flags "${_tc_link_flags} /libpath:${_tc_msvc_dir}/lib/${_tc_arch}")
+set(_tc_link_flags "${_tc_link_flags} /libpath:${_tc_sdk_libs_dir}/ucrt/${_tc_arch}")
+set(_tc_link_flags "${_tc_link_flags} /libpath:${_tc_sdk_libs_dir}/shared/${_tc_arch}")
+set(_tc_link_flags "${_tc_link_flags} /libpath:${_tc_sdk_libs_dir}/um/${_tc_arch}")
+
+set(CMAKE_ASM_COMPILER clang-cl CACHE FILEPATH "Assembler")
+set(CMAKE_C_COMPILER   clang-cl CACHE FILEPATH "C Compiler")
+set(CMAKE_CXX_COMPILER clang-cl CACHE FILEPATH "C++ Compiler")
+set(CMAKE_LINKER       lld-link CACHE FILEPATH "Linker")
+
+set(CMAKE_ASM_FLAGS "${_tc_asm_flags}" CACHE STRING "Assembler Flags")
+set(CMAKE_C_FLAGS   "${_tc_c_flags}"   CACHE STRING "C Flags")
+set(CMAKE_CXX_FLAGS "${_tc_c_flags}"   CACHE STRING "C++ Flags")
+set(CMAKE_RC_FLAGS  "${_tc_c_flags}"   CACHE STRING "Resource Compiler Flags")
+
+set(CMAKE_C_LINK_FLAGS   "${_tc_link_flags}" CACHE STRING "C Link Flags")
+set(CMAKE_CXX_LINK_FLAGS "${_tc_link_flags}" CACHE STRING "C++ Link Flags")

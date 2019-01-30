@@ -1,0 +1,2 @@
+RUN    curl -L https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz | tar zx --directory /usr/local \
+    && echo 'export path=(/usr/local/go/bin $path)' >> /etc/zsh/zshenv

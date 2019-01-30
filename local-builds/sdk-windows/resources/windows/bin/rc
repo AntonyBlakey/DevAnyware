@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+local args=($argv[0,${#argv}-2])
+local output=${argv[${#argv}-1]#/fo}
+local input=$argv[${#argv}]
+
+eval "clang-cl $args /E /Tc $input > /tmp/preprocessed.rc"
+eval "llvm-rc /FO $output /tmp/preprocessed.rc"

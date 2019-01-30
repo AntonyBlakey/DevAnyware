@@ -1,0 +1,11 @@
+diff --git a/Modules/Platform/Windows-MSVC.cmake b/Modules/Platform/Windows-MSVC.cmake
+index 2daf313bc..df0d4564e 100644
+--- a/Modules/Platform/Windows-MSVC.cmake
++++ b/Modules/Platform/Windows-MSVC.cmake
+@@ -381,5 +381,5 @@ macro(__windows_compiler_msvc_enable_rc flags)
+   endif()
+ 
+   enable_language(RC)
+-  set(CMAKE_NINJA_CMCLDEPS_RC 1)
++  # set(CMAKE_NINJA_CMCLDEPS_RC 1)
+ endmacro()

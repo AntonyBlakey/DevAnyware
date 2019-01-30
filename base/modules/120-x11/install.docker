@@ -1,0 +1,23 @@
+COPY --from=devanyware/builds/xchainkeys /xchainkeys /xchainkeys
+COPY --from=devanyware/builds/i3-gaps /i3-gaps /i3-gaps
+COPY --from=devanyware/builds/polybar /polybar /polybar
+COPY --from=devanyware/builds/wmfocus /wmfocus /wmfocus
+
+RUN    cat /xchainkeys/zshenv >> /etc/zsh/zshenv \
+    && cat /i3-gaps/zshenv >> /etc/zsh/zshenv \
+    && cat /polybar/zshenv >> /etc/zsh/zshenv \
+    && cat /wmfocus/zshenv >> /etc/zsh/zshenv \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+    xorg tigervnc-standalone-server tigervnc-common xsel compton xcape \
+    fonts-ubuntu fonts-roboto fonts-noto fonts-firacode \
+    rofi feh lxterminal chromium-browser \
+    $(cat /xchainkeys/dependencies) \ 
+    $(cat /i3-gaps/dependencies) \ 
+    $(cat /polybar/dependencies) \
+    $(cat /wmfocus/dependencies) \
+    && rm /etc/fonts/conf.d/10-hinting-slight.conf \
+    # ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/ \
+    && ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/ \
+    && ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/ \
+    && fc-cache -f

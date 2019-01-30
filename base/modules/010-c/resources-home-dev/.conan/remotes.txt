@@ -1,0 +1,1 @@
+soops http://artifactory.soops.intern/artifactory/api/conan/conan-local False

@@ -1,0 +1,8 @@
+include(MacOS)
+
+[settings]
+arch=x86_64
+build_type=Debug
+
+[env]
+CONAN_CMAKE_TOOLCHAIN_FILE=/cmake/toolchains/MacOS-x86_64

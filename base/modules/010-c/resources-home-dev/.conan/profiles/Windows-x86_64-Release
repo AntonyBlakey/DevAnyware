@@ -1,0 +1,8 @@
+include(Windows)
+
+[settings]
+arch=x86_64
+build_type=Release
+
+[env]
+CONAN_CMAKE_TOOLCHAIN_FILE=/cmake/toolchains/Windows-x86_64
