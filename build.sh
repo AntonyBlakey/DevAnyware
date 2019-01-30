@@ -4,17 +4,17 @@ set +o errexit ; set +o pipefail
 
 # Make sure to keep the ordering right
 images=(
-    local-builds/base
-    local-builds/llvm
-    local-builds/cmake
-    local-builds/ccls
-    local-builds/sdk-windows
-    local-builds/sdk-macos
-    local-builds/xchainkeys
-    local-builds/i3-gaps
-    local-builds/polybar
-    local-builds/wmfocus
-    local-builds/swi-prolog
+    input-builds/base
+    input-builds/llvm
+    input-builds/cmake
+    input-builds/ccls
+    input-builds/sdk-windows
+    input-builds/sdk-macos
+    input-builds/xchainkeys
+    input-builds/i3-gaps
+    input-builds/polybar
+    input-builds/wmfocus
+    input-builds/swi-prolog
     base
 )
 
