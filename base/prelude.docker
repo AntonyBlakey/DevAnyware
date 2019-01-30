@@ -47,7 +47,8 @@ CMD ["tmux", "-2"]
 
 USER dev
 
-RUN git config --global http.sslVerify false \
+RUN mkdir -p ~/.local/bin \
+    && git config --global http.sslVerify false \
     && git clone -q https://github.com/tarjoilija/zgen.git ~/.zgen \
     # Sourcing .zshrc forces it to initialize and download the modules
     && source ~/.zshrc \

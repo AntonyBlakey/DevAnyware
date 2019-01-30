@@ -11,13 +11,19 @@ RUN    cat /xchainkeys/zshenv >> /etc/zsh/zshenv \
     && apt-get install -y --no-install-recommends \
     xorg tigervnc-standalone-server tigervnc-common xsel compton xcape \
     fonts-ubuntu fonts-roboto fonts-noto fonts-firacode \
-    rofi feh lxterminal chromium-browser \
+    rofi feh lxterminal surf chromium-browser \
     $(cat /xchainkeys/dependencies) \ 
     $(cat /i3-gaps/dependencies) \ 
     $(cat /polybar/dependencies) \
     $(cat /wmfocus/dependencies) \
     && rm /etc/fonts/conf.d/10-hinting-slight.conf \
-    # ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/ \
     && ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/ \
     && ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/ \
-    && fc-cache -f
+    && fc-cache -f \
+    && git clone https://git.suckless.org/st \
+    && cd st \
+    && patch -o config.h config.def.h /st.config.h.patch \
+    && make install \
+    && cd .. \
+    && rm -rf st /st.config.h.patch \
+    && echo "alias st='st -e tmux'" >> /etc/zsh/zshenv
