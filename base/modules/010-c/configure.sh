@@ -24,6 +24,8 @@ cat <<EOF | jq -s '.[0] * .[1]' - $TEMP > $SETTINGS
     "ccls.highlighting.enabled.templateParameters": true,
     "ccls.highlighting.enabled.staticMemberVariables": true,
     "ccls.highlighting.enabled.globalVariables": true,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Chromium, ColumnLimit: 140 }",
+    "C_Cpp.clang_format_sortIncludes": false,
     "C_Cpp.autocomplete": "Disabled",
     "C_Cpp.formatting": "Disabled",
     "C_Cpp.errorSquiggles": "Disabled",

@@ -20,7 +20,7 @@
   "editor.lineNumbers": "relative",
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.renderIndentGuides": true,
   "editor.wordWrapColumn": 140,
   "editor.tabCompletion": "on",
@@ -53,15 +53,12 @@
   "gitlens.views.repositories.files.layout": "auto",
   "gitlens.views.fileHistory.enabled": true,
   "gitlens.views.lineHistory.enabled": true,
-
-  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Chromium, ColumnLimit: 140 }",
-  "C_Cpp.clang_format_sortIncludes": false,
+  "gitProjectManager.baseProjectsFolders": ["/home/dev/work"],
   "javascript.implicitProjectConfig.checkJs": true,
   "typescript.format.enable": true,
-  "reason_language_server.format_width": 140,
-  "python.pythonPath": "/usr/bin/python3",
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "prettier.printWidth": 140,
   "npm.enableScriptExplorer": true,
-  "gitProjectManager.baseProjectsFolders": ["/home/dev/work"]
+  "reason_language_server.format_width": 140,
+  "python.pythonPath": "/usr/bin/python3"
 }
