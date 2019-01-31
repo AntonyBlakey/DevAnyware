@@ -33,13 +33,3 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 function edit_in_vim () { vim $(fzf) }
 zle -N edit_in_vim_widget edit_in_vim
 bindkey "^P" edit_in_vim_widget
-
-######## vim
-
-export VISUAL=nvim
-alias vi=nvim
-alias vim=nvim
-
-######## local binaries
-
-export path=($HOME/.local/bin $path)

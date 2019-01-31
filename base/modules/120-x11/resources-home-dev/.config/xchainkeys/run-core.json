@@ -1,0 +1,6 @@
+[
+  { "name": "Terminal (st + tmux)", "command": "st" },
+  { "name": "Web Browser (Chromium)", "command": "chromium-browser" },
+  { "name": "Process Monitor (htop)", "command": "st -e htop" },
+  { "name": "File Manager (ranger)", "command": "st -e ranger" }
+]

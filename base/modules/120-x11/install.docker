@@ -11,7 +11,7 @@ RUN    cat /xchainkeys/zshenv >> /etc/zsh/zshenv \
     && apt-get install -y --no-install-recommends \
     xorg tigervnc-standalone-server tigervnc-common xsel compton xcape \
     fonts-ubuntu fonts-roboto fonts-noto fonts-firacode \
-    rofi feh lxterminal surf chromium-browser \
+    rofi feh surf chromium-browser \
     $(cat /xchainkeys/dependencies) \ 
     $(cat /i3-gaps/dependencies) \ 
     $(cat /polybar/dependencies) \
@@ -19,11 +19,16 @@ RUN    cat /xchainkeys/zshenv >> /etc/zsh/zshenv \
     && rm /etc/fonts/conf.d/10-hinting-slight.conf \
     && ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/ \
     && ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/ \
-    && fc-cache -f \
-    && git clone https://git.suckless.org/st \
-    && cd st \
+    && fc-cache -f
+
+RUN    curl https://dl.suckless.org/st/st-0.8.1.tar.gz | tar zxf - \
+    && pushd st* \
+    && curl -O https://st.suckless.org/patches/hidecursor/st-hidecursor-0.8.1.diff \
+    && curl -O https://st.suckless.org/patches/boxdraw/st-boxdraw-2018-11-01-30ec9a3.patch \
+    && git apply st-hidecursor*.diff \
+    && git apply st-boxdraw*.patch \
     && patch -o config.h config.def.h /st.config.h.patch \
     && make install \
-    && cd .. \
-    && rm -rf st /st.config.h.patch \
+    && popd \
+    && rm -rf st* \
     && echo "alias stmux='st -e tmux'" >> /etc/zsh/zshenv
