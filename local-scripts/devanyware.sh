@@ -19,13 +19,13 @@ zparseopts -D                \
     -name:=name              \
     -vnc::=vnc_port          \
     -no-docker=no_docker     \
-    -host::=map_host         \
-    -no-host=no_map_host
+    -host-map::=host_map         \
+    -no-host_map=no_host_map
 
-if [ -n "$no_map_host" ] ; then
+if [ -n "$no_host_map" ] ; then
     host_mapping=
 else
-    host_mapping=-v=${${map_host:+${map_host#--host}}:-$(pwd)}:/host
+    host_mapping=-v=${${host_map:+${host_map#--host}}:-$(pwd)}:/host
 fi
 
 vnc_port=${vnc_port:+${${vnc_port#--vnc}:-5910}}

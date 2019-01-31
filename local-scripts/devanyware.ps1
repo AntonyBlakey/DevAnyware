@@ -4,7 +4,9 @@ Param (
     [Parameter()] [string] $Image,
     [Parameter()] [Int32] $VNC,
     [Parameter()] [string] $Name,
-    [Parameter()] [switch] $NoDocker
+    [Parameter()] [switch] $NoDocker,
+    [Parameter()] [string] $HostMap,
+    [Parameter()] [switch] $NoHostMap
 )
 
 if ($NoDocker) {
@@ -13,6 +15,18 @@ if ($NoDocker) {
 else {
     $ip = (Get-NetIPAddress -InterfaceAlias "vEthernet (DockerNAT)" -AddressFamily IPv4).IPAddress
     $dockerMapping = "-e DOCKER_HOST=tcp://${ip}:2375"
+}
+
+if ($NoHostMap) {
+    $hostMapping = ""
+}
+else {
+    if ($PSBoundParameters.ContainsKey('HostMap')) {
+        $hostMapping = "-v ${HostMap}:/host"
+    }
+    else {
+        $hostMapping = "-v ${PWD}:/host"
+    }
 }
 
 if ($PSBoundParameters.ContainsKey('Image')) {
@@ -24,7 +38,7 @@ else {
 }
 
 if ($PSBoundParameters.ContainsKey('VNC')) {
-    $vncPortmap = "-p=${VNC}:5900"
+    $vncPortmap = "-p ${VNC}:5900"
     $itord = "-d"
     $cmd = "start-vnc"
 }
@@ -45,7 +59,4 @@ else {
     $rm = "--rm"
 }
 
-docker `
-    run --cap-add SYS_ADMIN --shm-size 1G $itord $rm --name $name -h $name `
-    $vncPortmap $dockerMapping -v ${PWD}:/host `
-    $image $cmd
+docker run --cap-add SYS_ADMIN --shm-size 1G $itord $rm --name $name -h $name $vncPortmap $dockerMapping $hostMapping $image $cmd
