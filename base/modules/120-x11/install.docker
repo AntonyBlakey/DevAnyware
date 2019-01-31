@@ -26,4 +26,4 @@ RUN    cat /xchainkeys/zshenv >> /etc/zsh/zshenv \
     && make install \
     && cd .. \
     && rm -rf st /st.config.h.patch \
-    && echo "alias st='st -e tmux'" >> /etc/zsh/zshenv
+    && echo "alias stmux='st -e tmux'" >> /etc/zsh/zshenv
