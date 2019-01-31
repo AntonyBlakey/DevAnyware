@@ -11,15 +11,16 @@ if ($NoDocker) {
     $dockerMapping = ""
 }
 else {
-    $ip = (Get-NetIPAddress -InterfaceAlias "vEthernet (nat)" -AddressFamily IPv4).IPAddress
-    $dockerMapping = "-e DOCKER_HOST=tcp://$ip:2375"
+    $ip = (Get-NetIPAddress -InterfaceAlias "vEthernet (DockerNAT)" -AddressFamily IPv4).IPAddress
+    $dockerMapping = "-e DOCKER_HOST=tcp://${ip}:2375"
 }
 
 if ($PSBoundParameters.ContainsKey('Image')) {
     $image = "${env:DEVANYWARE_IMAGE_PREFIX}$Image"
 }
 else {
-    $image = "${env:DEVANYWARE_USER_IMAGE_PREFIX}${env:USERNAME}"
+    $username = $env:USERNAME.ToLower()
+    $image = "${env:DEVANYWARE_USER_IMAGE_PREFIX}${username}"
 }
 
 if ($PSBoundParameters.ContainsKey('VNC')) {
