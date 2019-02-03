@@ -11,7 +11,7 @@ RUN echo 'root:root' | chpasswd \
     libicu60 libssl1.0.0 \
     gnupg2 apt-transport-https ca-certificates \
     sudo zsh tmux \
-    psmisc htop curl wget jq sed gpp gawk xz-utils neovim unzip less git patch ripgrep ranger \
+    psmisc htop curl wget jq sed gpp gawk xz-utils neovim unzip less git patch ripgrep ranger file \
     && rm -rf /var/lib/apt/lists \
     && git config --global http.sslVerify false \
     && usermod -s /usr/bin/zsh root \

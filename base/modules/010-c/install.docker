@@ -22,5 +22,5 @@ RUN    cat /cmake/zshenv >> /etc/zsh/zshenv \
     # These are specifically for visualworks-vm compilation.
     # Not a generic requirment, but useful for Soops.
     libx11-dev libx11-dev:i386 \
-    && pip3 install conan compdb \
+    && pip3 install conan compdb scan-build \
     && echo 'export path=(/conan/bin $path)' >> /etc/zsh/zshenv

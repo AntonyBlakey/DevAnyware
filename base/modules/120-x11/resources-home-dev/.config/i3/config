@@ -24,7 +24,9 @@ client.background       #ffffff
 exec --no-startup-id ~/.config/screenlayout.sh
 exec --no-startup-id compton &
 
+for_window [class="^feh$" title="cache/commando/images"] floating enable
+
 for_window [window_role="pop-up"] border pixel 1
 for_window [floating] border normal 6
 
-for_window [title="^i3 command mode help$"] floating enable, border pixel 1
+for_window [class="^feh$" title="cache/commando/images"] border pixel 1
