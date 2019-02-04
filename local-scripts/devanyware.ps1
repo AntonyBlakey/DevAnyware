@@ -22,10 +22,10 @@ if ($NoHostMap) {
 }
 else {
     if ($PSBoundParameters.ContainsKey('HostMap')) {
-        $hostMapping = "-v ${HostMap}:/host"
+        $hostMapping = "-v=${HostMap}:/host"
     }
     else {
-        $hostMapping = "-v ${PWD}:/host"
+        $hostMapping = "-v=${PWD}:/host"
     }
 }
 
@@ -38,7 +38,7 @@ else {
 }
 
 if ($PSBoundParameters.ContainsKey('VNC')) {
-    $vncPortmap = "-p ${VNC}:5900"
+    $vncPortmap = "-p=${VNC}:5900"
     $itord = "-d"
     $cmd = "start-vnc"
 }
