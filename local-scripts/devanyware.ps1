@@ -59,4 +59,4 @@ else {
     $rm = "--rm"
 }
 
-docker run --cap-add SYS_ADMIN --shm-size 1G $itord $rm --name $name -h $name $vncPortmap $dockerMapping $hostMapping $image $cmd
+docker run --cap-add SYS_ADMIN --shm-size 1G $itord $rm --name $name -h $name --dns-opt=single-request $vncPortmap $dockerMapping $hostMapping $image $cmd
