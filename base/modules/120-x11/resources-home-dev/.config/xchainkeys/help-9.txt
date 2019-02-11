@@ -1,3 +1,0 @@
-
-q            - Quit the X session
-r            - Restart the X session
