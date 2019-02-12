@@ -1,0 +1,39 @@
+body {
+  font-family: "Operator Mono SSm Medium", "Source Code Pro";
+  color: hsl(220, 100%, 75%);
+  background-color: hsl(206, 100%, 8%);
+  margin: 0;
+}
+body > div {
+  float: left;
+  padding: 6px 12px;
+  border: 1px solid red;
+  font-size: 8pt;
+}
+th {
+  white-space: nowrap;
+  padding: 4px 1px;
+  text-align: middle;
+  border-bottom: 1px dotted hsl(160, 100%, 30%);
+}
+td {
+  white-space: nowrap;
+  padding: 1px 1px;
+}
+td:nth-of-type(odd) {
+  text-align: right;
+}
+td:nth-of-type(odd)::after {
+  font-family: "Fira Code";
+  content: " -> ";
+  color: hsl(160, 100%, 30%);
+}
+td:nth-of-type(odd).empty::after {
+  content: "";
+}
+td:nth-of-type(even) {
+  padding-right: 18px;
+}
+td:last-of-type {
+  padding-right: 1px;
+}
