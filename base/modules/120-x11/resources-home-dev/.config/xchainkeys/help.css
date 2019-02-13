@@ -5,21 +5,27 @@ body {
   background-color: hsl(206, 100%, 8%);
   margin: 0;
 }
+
 body > div {
   float: left;
+  padding: 0.5em 1em;
+  border: 1px solid red;
+}
+
+.hydra {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
-  padding: 0.5em 1em;
-  border: 1px solid red;
 }
+
 .column {
   display: grid;
   padding: 1em;
   grid-template-columns: auto auto;
   white-space: nowrap;
 }
+
 .header {
   text-align: center;
   grid-column: 1 / span 2;
@@ -27,18 +33,43 @@ body > div {
   margin-bottom: 0.5em;
   border-bottom: 1px solid hsl(160, 50%, 20%);
 }
+
 .key {
   text-align: right;
+  white-space: nowrap;
 }
+
 .key .prefix {
   color: hsl(220, 40%, 50%);
 }
+
+.label {
+  white-space: nowrap;
+}
+
 .exit {
   color: hsl(20, 100%, 35%)
 }
+
 .key::after {
   font-family: "Fira Code";
   padding: 0 1em;
   content: "->";
   color: hsl(160, 100%, 30%);
+}
+
+.whichkey {
+  padding: 1.5em 1.5em;
+  display: grid;
+  row-gap: 0.2em;
+  grid-template-columns: repeat(4, auto, auto);
+  grid-template-rows: repeat(5, auto);
+}
+
+.whichkey .label {
+  padding-right: 0.5em;
+}
+
+.whichkey .key {
+  padding-left: 0.5em;
 }
