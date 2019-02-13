@@ -1,39 +1,44 @@
 body {
   font-family: "Operator Mono SSm Medium", "Source Code Pro";
-  color: hsl(220, 100%, 75%);
+  font-size: 8pt;
+  color: hsl(220, 90%, 65%);
   background-color: hsl(206, 100%, 8%);
   margin: 0;
 }
 body > div {
   float: left;
-  padding: 6px 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: 0.5em 1em;
   border: 1px solid red;
-  font-size: 8pt;
 }
-th {
+.column {
+  display: grid;
+  padding: 1em;
+  grid-template-columns: auto auto;
   white-space: nowrap;
-  padding: 4px 1px;
-  text-align: middle;
-  border-bottom: 1px dotted hsl(160, 100%, 30%);
 }
-td {
-  white-space: nowrap;
-  padding: 1px 1px;
+.header {
+  text-align: center;
+  grid-column: 1 / span 2;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid hsl(160, 50%, 20%);
 }
-td:nth-of-type(odd) {
+.key {
   text-align: right;
 }
-td:nth-of-type(odd)::after {
+.key .prefix {
+  color: hsl(220, 40%, 50%);
+}
+.exit {
+  color: hsl(20, 100%, 35%)
+}
+.key::after {
   font-family: "Fira Code";
-  content: " -> ";
+  padding: 0 1em;
+  content: "->";
   color: hsl(160, 100%, 30%);
-}
-td:nth-of-type(odd).empty::after {
-  content: "";
-}
-td:nth-of-type(even) {
-  padding-right: 18px;
-}
-td:last-of-type {
-  padding-right: 1px;
 }

@@ -10,7 +10,7 @@ const sortKey = k => {
   let key = k;
   let prefix = "";
   while (key.length > 1 && key[1] == "-") {
-    prefix = prefix + key[0];
+    prefix = prefix + key[0] + "-";
     key = key.substring(2);
   }
   let category = "";
@@ -29,49 +29,46 @@ const sortKey = k => {
   } else {
     category = "8";
   }
-  return prefix.length + prefix + category + key;
+  return [prefix.length, prefix, category, key];
 };
 
-const keySorter = (a, b) => {
-  const key1 = sortKey(a);
-  const key2 = sortKey(b);
-  if (key1 < key2) {
-    return -1;
-  } else if (key1 > key2) {
-    return 1;
-  } else {
-    return 0;
+const arrayCompare = (a, b) => {
+  const key1 = a.sortKey;
+  const key2 = b.sortKey;
+  if (key1.length !== key2.length) return key1.length - key2.length;
+  for (let i = 0; i < key1.length; i++) {
+    if (key1[i] < key2[i]) {
+      return -1;
+    } else if (key1[i] > key2[i]) {
+      return 1;
+    }
   }
+  return 0;
 };
 
 const file = process.argv[2];
 const json = require(file);
 const hydra = json.F35.hydra;
 
-console.log(`<html><head><link rel="stylesheet" href="${__dirname}/help.css"/></head><body><div><table>`);
+const columns = Object.entries(hydra).map(([label, elements]) => {
+  return {
+    label: label,
+    elements: Object.entries(elements).map(([key, value]) => {
+      return { ...value, key: key, sortKey: sortKey(key) };
+    }).sort(arrayCompare)
+  };
+});
 
-console.log("<tr>");
-let rowCount = 0;
-for (let k in hydra) {
-  console.log(`<th colspan='2'>${k}</th>`);
-  rowCount = Math.max(rowCount, Object.keys(hydra[k]).length);
-}
-console.log("</tr>");
+console.log(`<html><head><link rel="stylesheet" href="${__dirname}/help.css"/></head><body><div>`);
 
-for (let row = 0; row < rowCount; row++) {
-  console.log("<tr>");
-  for (let k in hydra) {
-    const group = hydra[k];
-    const keys = Object.keys(group).sort(keySorter);
-    if (row < keys.length) {
-      const key = keys[row];
-      const label = group[key].label;
-      console.log(`<td>${escapeHTML(key)}</td><td>${escapeHTML(label)}</td>`);
-    } else {
-      console.log(`<td class='empty'></td><td class='empty'></td>`);
-    }
-  }
-  console.log("</tr>");
-}
+columns.forEach(column => {
+  console.log("<div class='column'>");
+  console.log(`<div class='header'>${column.label}</div>`);
+  column.elements.forEach(row => {
+    console.log(`<div class='key'><span class='prefix'>${row.sortKey[1]}</span>${escapeHTML(row.sortKey[3])}</div>`);
+    console.log(`<div class='label ${row.exit ? "exit" : ""}'>${escapeHTML(row.label)}</div>`);
+  });
+  console.log("</div>");
+});
 
-console.log("</table></div></body></html>");
+console.log("</div></body></html>");
