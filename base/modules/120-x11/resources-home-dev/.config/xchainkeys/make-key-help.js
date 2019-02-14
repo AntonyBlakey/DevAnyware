@@ -55,22 +55,22 @@ const collapseNumericRanges = mapping => {
     if (!one) {
       return m;
     }
-    const genericLabel = one.label.replace(' 1', 'n')
+    const genericLabel = one.label.replace(" 1", "n");
     // TODO: a one-pass search for these
     // const zero = m.find(x => x.sortKey[3] === "0" && x.sortKey[2] === one.sortKey[2] && x.label.replace('0', 'n') === one.label.replace('1', 'n'));
-    const two = m.find(x => x.sortKey[3] === "2" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 2', 'n') === genericLabel);
-    const three = m.find(x => x.sortKey[3] === "3" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 3', 'n') === genericLabel);
-    const four = m.find(x => x.sortKey[3] === "4" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 4', 'n') === genericLabel);
-    const five = m.find(x => x.sortKey[3] === "5" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 5', 'n') === genericLabel);
-    const six = m.find(x => x.sortKey[3] === "6" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 6', 'n') === genericLabel);
-    const seven = m.find(x => x.sortKey[3] === "7" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 7', 'n') === genericLabel);
-    const eight = m.find(x => x.sortKey[3] === "8" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 8', 'n') === genericLabel);
-    const nine = m.find(x => x.sortKey[3] === "9" && x.sortKey[2] === one.sortKey[2] && x.label.replace(' 9', 'n') === genericLabel);
+    const two = m.find(x => x.sortKey[3] === "2" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 2", "n") === genericLabel);
+    const three = m.find(x => x.sortKey[3] === "3" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 3", "n") === genericLabel);
+    const four = m.find(x => x.sortKey[3] === "4" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 4", "n") === genericLabel);
+    const five = m.find(x => x.sortKey[3] === "5" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 5", "n") === genericLabel);
+    const six = m.find(x => x.sortKey[3] === "6" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 6", "n") === genericLabel);
+    const seven = m.find(x => x.sortKey[3] === "7" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 7", "n") === genericLabel);
+    const eight = m.find(x => x.sortKey[3] === "8" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 8", "n") === genericLabel);
+    const nine = m.find(x => x.sortKey[3] === "9" && x.sortKey[2] === one.sortKey[2] && x.label.replace(" 9", "n") === genericLabel);
     if (two && three && four && five && six && seven && eight && nine) {
-      m = m.filter(x => !("23456789".includes(x.sortKey[3]) && x.sortKey[2] === one.sortKey[2]))
-      one.key = '1..9';
-      one.sortKey[3] = '1..9';
-      one.label = one.label.replace('1', '1..9');
+      m = m.filter(x => !("23456789".includes(x.sortKey[3]) && x.sortKey[2] === one.sortKey[2]));
+      one.key = "1..9";
+      one.sortKey[3] = "1..9";
+      one.label = one.label.replace("1", "1..9");
     } else {
       return m;
     }
@@ -137,5 +137,5 @@ const formatWhichKey = mapping => {
 const file = process.argv[2];
 const json = require(file);
 
-formatHydra(json.F35.hydra);
+formatHydra(json.Super.hydra);
 // formatWhichKey(json);
