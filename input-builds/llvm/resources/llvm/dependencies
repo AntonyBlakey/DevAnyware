@@ -1,1 +1,1 @@
-binutils libc6-dev libstdc++-8-dev
+binutils libc6-dev libstdc++-8-dev libpython2.7

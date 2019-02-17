@@ -10,7 +10,7 @@ code-insiders --install-extension eamodio.gitlens
 code-insiders --install-extension felipecaputo.git-project-manager 
 code-insiders --install-extension pflannery.vscode-versionlens 
 code-insiders --install-extension peterjausovec.vscode-docker 
-code-insiders --install-extension vadimcn.vscode-lldb 
+code-insiders --install-extension webfreak.debug
 code-insiders --install-extension alefragnani.bookmarks 
 code-insiders --install-extension sleistner.vscode-fileutils 
 code-insiders --install-extension formulahendry.code-runner

@@ -1,6 +1,6 @@
 body {
   font-family: "Operator Mono SSm Medium", "Source Code Pro";
-  font-size: 8pt;
+  font-size: 9pt;
   color: hsl(220, 90%, 65%);
   background-color: hsl(206, 100%, 8%);
   margin: 0;
@@ -48,7 +48,7 @@ body > div {
 }
 
 .exit {
-  color: hsl(20, 100%, 35%)
+  color: hsl(20, 100%, 35%);
 }
 
 .key::after {
@@ -72,4 +72,10 @@ body > div {
 
 .whichkey .key {
   padding-left: 0.5em;
+}
+
+.prefix .symbol {
+  font-family: "Lucida Grande";
+  font-size: 9pt;
+  color: hsl(220, 90%, 65%);
 }
