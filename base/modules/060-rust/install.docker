@@ -2,4 +2,6 @@ USER dev
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y \
     && echo 'export path=($HOME/.cargo/bin $path)' >> ~/.zshenv \
     && ~/.cargo/bin/rustup component add rls rust-analysis rust-src rustfmt clippy
+# && ~/.cargo/bin/rustup install nightly \
+# && ~/.cargo/bin/rustup default nightly
 USER root
