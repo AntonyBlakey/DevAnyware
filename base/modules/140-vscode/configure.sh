@@ -15,4 +15,5 @@ code-insiders --install-extension alefragnani.bookmarks
 code-insiders --install-extension sleistner.vscode-fileutils 
 code-insiders --install-extension formulahendry.code-runner
 code-insiders --install-extension ms-vscode.PowerShell
+code-insiders --install-extension mrmlnc.vscode-json5
 code-insiders --install-extension christian-kohler.path-intellisense
