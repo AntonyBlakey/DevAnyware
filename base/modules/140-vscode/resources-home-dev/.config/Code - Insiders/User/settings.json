@@ -41,7 +41,6 @@
   },
   "powershell.integratedConsole.showOnStartup": false,
   "workbench.sideBar.location": "right",
-  "bracket-pair-colorizer-2.forceIterationColorCycle": true,
   "workbench.colorCustomizations": {
     "activityBar.background": "#000C1D",
     "activityBar.border": "#102a44",
