@@ -59,4 +59,4 @@ log/start() {
 
 ) > Dockerfile
 
-docker build -t devanyware/$name --build-arg VSCODE_DOWNLOAD_DATE=$(date +'%Y%m%d') . | tee -a build.log
+docker build -t devanyware/$name . | tee -a build.log

@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-code-insiders --install-extension ms-python.python
+code --install-extension ms-python.python

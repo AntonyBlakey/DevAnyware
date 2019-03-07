@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-code-insiders --install-extension ms-vscode.cpptools
-code-insiders --install-extension ccls-project.ccls
-code-insiders --install-extension twxs.cmake 
+code --install-extension ms-vscode.cpptools
+code --install-extension ccls-project.ccls
+code --install-extension twxs.cmake 
 
 TEMP=$(mktemp)
 SETTINGS='/home/dev/.config/Code - Insiders/User/settings.json'

@@ -1,4 +1,7 @@
-ARG VSCODE_DOWNLOAD_DATE=unknown
-RUN curl --insecure -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg \
-    && echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list \
-    && apt-get update && apt-get install -y --no-install-recommends code-insiders 
+ADD https://go.microsoft.com/fwlink/?LinkID=760868 /tmp/vscode.deb
+RUN dpkg -i /tmp/vscode.deb || sudo apt -f install -y --no-install-recommends
+
+# ADD https://go.microsoft.com/fwlink/?LinkId=723968 /tmp/vscode.tar.gz
+# RUN curl --insecure -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg \
+#     && echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list \
+#     && apt-get update && apt-get install -y --no-install-recommends code-insiders 

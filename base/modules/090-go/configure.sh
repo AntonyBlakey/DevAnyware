@@ -22,4 +22,4 @@ go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
 go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct 
 go get -u -v github.com/go-delve/delve/cmd/dlv
 
-code-insiders --install-extension ms-vscode.Go
+code --install-extension ms-vscode.Go

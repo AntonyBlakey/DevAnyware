@@ -16,6 +16,7 @@ zparseopts -D                \
     e+:=environment          \
     p+:=ports                \
     v+:=volumes              \
+    -link+:=links             \
     -name:=name              \
     -vnc::=vnc_port          \
     -no-docker=no_docker     \
@@ -57,5 +58,5 @@ fi
 
 docker \
     run --cap-add SYS_ADMIN --shm-size 1G $itord $rm --name $name -h $name --dns-opt=single-request \
-    $environment $ports $volumes $vnc_portmap $docker_mapping $host_mapping \
+    $links $environment $ports $volumes $vnc_portmap $docker_mapping $host_mapping \
     $image $cmd

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-code-insiders --install-extension cospaia.clojure4vscode
+code --install-extension cospaia.clojure4vscode
 
 # TEMP=$(mktemp)
 # SETTINGS='/home/dev/.config/Code - Insiders/User/settings.json'
