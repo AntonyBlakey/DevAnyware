@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 code --install-extension rust-lang.rust
+code --install-extension bungcip.better-toml
 
 TEMP=$(mktemp)
 SETTINGS='/home/dev/.config/Code/User/settings.json'
