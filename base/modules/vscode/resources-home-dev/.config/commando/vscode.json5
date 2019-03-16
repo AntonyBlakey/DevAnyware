@@ -1,0 +1,8 @@
+[
+  {
+    path: "window-manager/launch",
+    keys: {
+      i: { label: "vs code", command: "code" }
+    }
+  }
+]

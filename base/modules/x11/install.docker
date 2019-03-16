@@ -1,0 +1,8 @@
+RUN    apt-get update \
+    && apt-get install -y --no-install-recommends \
+    xorg tigervnc-standalone-server tigervnc-common xsel compton xcape \
+    fonts-ubuntu fonts-roboto fonts-noto fonts-firacode \
+    && rm /etc/fonts/conf.d/10-hinting-slight.conf \
+    && ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/ \
+    && ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/ \
+    && fc-cache -f

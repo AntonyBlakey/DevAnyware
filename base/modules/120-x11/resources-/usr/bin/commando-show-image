@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-IMAGE=$1
-read WIDTH HEIGHT < <(identify -format "%w %h" $IMAGE)
-feh --geometry +$(( (2560 - $WIDTH) >> 1 ))+$(( 1440 - $HEIGHT )) $IMAGE

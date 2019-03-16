@@ -1,0 +1,10 @@
+RUN    curl https://dl.suckless.org/st/st-0.8.1.tar.gz | tar zxf - \
+    && pushd st* \
+    && curl -O https://st.suckless.org/patches/hidecursor/st-hidecursor-0.8.1.diff \
+    && curl -O https://st.suckless.org/patches/boxdraw/st-boxdraw-20181101-30ec9a3.diff \
+    && git apply st-hidecursor*.diff \
+    && git apply st-boxdraw*.diff \
+    && patch -o config.h config.def.h /st.config.h.patch \
+    && make install \
+    && popd \
+    && rm -rf st*

@@ -1,0 +1,1 @@
+alias stmux='st -e tmux'

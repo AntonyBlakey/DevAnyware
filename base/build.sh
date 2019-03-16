@@ -20,6 +20,22 @@ log/start() {
     fi
 }
 
+# modules is already used in zsh
+da_modules=(     \
+    "c"          \
+    "python"     \
+    "conan"      \
+    "javascript" \
+    "reason"     \
+    "rust"       \
+    "x11"        \
+    "commando"   \
+    "qtile"      \
+    "st"         \
+    "neovim"     \
+    "vscode"     \
+)
+
 (
     cat prelude.docker
     echo
@@ -27,7 +43,8 @@ log/start() {
     log/start "Install Modules"
     echo "USER root"
 
-    for m in modules/*(/) ; do 
+    for n in $da_modules ; do 
+        m=modules/$n
         if [ -d $m/resources- ] ; then
             log/start "Install $m"
             echo "COPY $m/resources-/ /"
@@ -46,7 +63,8 @@ log/start() {
     log/start "Configure Modules"
     echo "USER dev"
 
-    for m in modules/*(/) ; do 
+    for n in $da_modules ; do 
+        m=modules/$n
         if [ -f $m/configure.sh ] ; then
             log/start "Configure $m"
             echo "COPY --chown=dev:dev $m/configure.sh configure.sh"

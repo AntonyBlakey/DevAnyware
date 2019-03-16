@@ -1,0 +1,15 @@
+USER dev
+RUN    sudo apt-get update \
+    && sudo apt-get install -y --no-install-recommends \
+    python3 python3-pip python3-setuptools python3-wheel \
+    dpkg-dev \
+    libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev \
+    libffi-dev liblzma-dev python-openssl \
+    && curl -sSf https://pyenv.run | sh \
+    && source $HOME/.config/zsh/python.zshenv \
+    && pyenv install 3.7.2 \
+    && pyenv rehash \
+    && pyenv global 3.7.2 \
+    && pip install --upgrade pip
+USER root

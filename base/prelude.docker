@@ -1,6 +1,9 @@
 FROM ubuntu:18.10
 
-ENV LC_ALL=C.UTF-8
+RUN apt-get update && apt-get install -y --no-install-recommends locales
+
+RUN locale-gen "en_AU.UTF-8"
+ENV LC_ALL=en_AU.UTF-8
 
 VOLUME [ "/host" ]
 
@@ -11,8 +14,8 @@ RUN echo 'root:root' | chpasswd \
     libicu60 libssl1.0.0 \
     gnupg2 apt-transport-https ca-certificates \
     sudo zsh tmux \
-    psmisc htop curl wget jq sed gpp gawk xz-utils neovim unzip less git patch ripgrep ranger file \
-    && rm -rf /var/lib/apt/lists \
+    psmisc htop curl wget jq sed gawk xz-utils bzip2 zip unzip git patch file \
+    less neovim ranger \
     && git config --global http.sslVerify false \
     && usermod -s /usr/bin/zsh root \
     # install docker client

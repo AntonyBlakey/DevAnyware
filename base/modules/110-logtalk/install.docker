@@ -1,5 +1,0 @@
-COPY --from=devanyware/builds/swi-prolog /swipl /swipl
-RUN    cat /swipl/zshenv >> /etc/zsh/zshenv \
-    && curl -L https://logtalk.org/files/logtalk_3.22.0-1_all.deb -o logtalk.deb \
-    && dpkg --install logtalk*.deb \
-    && rm logtalk*.deb
