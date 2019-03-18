@@ -75,11 +75,11 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Bsp(),
-    layout.MonadTall(),
-    layout.Floating(),
+    layout.MonadTall(max_ratio=0.85, ratio=0.65,
+                     align=layout.MonadTall._right),
+    layout.MonadWide(max_ratio=0.85, ratio=0.75),
+    layout.Stack(num_stacks=3),
     layout.Max(),
-    layout.Stack(num_stacks=3)
 ]
 
 widget_defaults = dict(
