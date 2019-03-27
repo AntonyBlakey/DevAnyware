@@ -13,7 +13,7 @@ if ($NoDocker) {
     $dockerMapping = ""
 }
 else {
-    $ip = (Get-NetIPAddress -InterfaceAlias "vEthernet (DockerNAT)" -AddressFamily IPv4).IPAddress
+    $ip = (Get-NetIPAddress -InterfaceAlias "vEthernet (DockerNAT)", "vEthernet (nat)" -AddressFamily IPv4).IPAddress
     $dockerMapping = "-e DOCKER_HOST=tcp://${ip}:2375"
 }
 
