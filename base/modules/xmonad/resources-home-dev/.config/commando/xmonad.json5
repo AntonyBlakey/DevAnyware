@@ -27,7 +27,7 @@
           "9": { label: "Space 9", command: "i3-msg workspace 9" },
           Up: { label: "Parent", command: "i3-msg focus parent", loop: true },
           Down: { label: "Child", command: "i3-msg focus child", loop: true },
-          space: { label: "Select…", command: "wmfocus --textcolor '#00ddff' --bgcolor '#ffffff' --font 'Source Code Pro:96'" }
+          space: { label: "Select…", command: "wmfocus --textcolor '#00ddff' --bgcolor '#ffffff' --font 'Noto Sans Mono:96'" }
         }
       },
       {

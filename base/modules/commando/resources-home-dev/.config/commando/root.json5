@@ -2,21 +2,19 @@
   {
     commands: {
       Cancel: ["Escape", "ctrl-g"],
-      ToggleHelp: ["cmd-question"],
+      ToggleHelp: ["cmd-question"]
     },
     handlers: {
-      ShowHelp: 'commando_show_help.sh',
-      HideHelp: 'commando_hide_help.sh',
-      EnterModal: 'echo "** ENTER"',
-      ExitModal: 'echo "** EXIT"',
+      // EnterModal: 'echo "** ENTER"',
+      // ExitModal: 'echo "** EXIT"'
+      ShowHelp: "commando_show_help.sh",
+      HideHelp: "commando_hide_help.sh"
     },
     keys: {
       // "Command": { label: "Window Manager", mode: "window-manager" },
-      // "F35": { label: "Window Manager", mode: "window-manager" },
-      "cmd-space": { label: "Window Manager", mode: "window-manager" },
-      //"Control": { label: "Contextual", mode: "root" },
-      // "F34": { label: "Contextual", mode: "root" },
-      "cmd-backslash": { label: "Contextual", mode: "root" },
+      // "Control": { label: "Contextual", mode: "root" },
+      F35: { label: "Window Manager", mode: "window-manager" },
+      F34: { label: "Contextual", mode: "root" }
     }
   }
 ]

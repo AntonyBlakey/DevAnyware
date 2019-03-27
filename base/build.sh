@@ -30,8 +30,7 @@ da_modules=(     \
     "rust"       \
     "x11"        \
     "commando"   \
-    "qtile"      \
-    "st"         \
+    "xmonad"     \
     "neovim"     \
     "vscode"     \
 )

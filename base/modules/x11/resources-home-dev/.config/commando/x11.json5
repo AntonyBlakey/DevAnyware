@@ -2,8 +2,9 @@
   {
     path: "window-manager/launch",
     keys: {
-      h: { label: "htop", command: "st -e htop" },
-      w: { label: "chromium", command: "chromium-browser" }
+      t: { label: "terminal", command: "exec alacritty" },
+      h: { label: "htop", command: "exec alacritty -e htop" },
+      w: { label: "chromium", command: "exec chromium-browser" }
     }
   }
 ]

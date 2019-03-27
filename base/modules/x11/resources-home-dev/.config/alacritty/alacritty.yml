@@ -86,8 +86,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    # family: "Noto Sans Mono"
-    family: "Operator Mono SSm"
+    family: "Noto Sans Mono"
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -115,7 +114,7 @@ font:
   #style: Italic
 
   # Point size
-  size: 10.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -160,8 +159,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: "0x20201d"
-    foreground: "0xa6a28c"
+    background: "0x001627"
+    foreground: "0xd6deeb"
 
     # Bright and dim foreground colors
     #
@@ -176,30 +175,30 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-    text: "0x20201d"
-    cursor: "0xa6a28c"
+    text: "0x7e57c2"
+    cursor: "0xffffff"
 
   # Normal colors
   normal:
-    black: "0x20201d"
-    red: "0xd73737"
-    green: "0x60ac39"
-    yellow: "0xae9513"
-    blue: "0x6684e1"
-    magenta: "0xb854d4"
-    cyan: "0x1fad83"
-    white: "0xa6a28c"
+    black: "0x011627"
+    red: "0xef5350"
+    green: "0x22da6e"
+    yellow: "0xaddb67"
+    blue: "0x82aaff"
+    magenta: "0xc792ea"
+    cyan: "0x21c7a8"
+    white: "0xffffff"
 
   # Bright colors
   bright:
-    black: "0x7d7a68"
-    red: "0xd73737"
-    green: "0x60ac39"
-    yellow: "0xae9513"
-    blue: "0x6684e1"
-    magenta: "0xb854d4"
-    cyan: "0x1fad83"
-    white: "0xfefbec"
+    black: "0x575656"
+    red: "0xef5350"
+    green: "0x22da6e"
+    yellow: "0xffeb95"
+    blue: "0x82aaff"
+    magenta: "0xc792ea"
+    cyan: "0x75dbca"
+    white: "0xffffff"
 
   # Dim colors
   #

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-git clone https://github.com/llvm/llvm-project.git --branch release/8.x --depth 1
+git clone https://github.com/llvm/llvm-project.git --branch llvmorg-8.0.0 --depth 1
 mkdir llvm-project/build
 pushd llvm-project/build
 cmake ../llvm -G Ninja \

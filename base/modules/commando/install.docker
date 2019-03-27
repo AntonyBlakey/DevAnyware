@@ -1,3 +1,7 @@
-RUN    apt-get update \
-    && apt-get install -y --no-install-recommends \
-    libxkbcommon-x11-dev feh xdotool rofi chromium-browser imagemagick
+USER dev
+RUN    sudo apt-get update \
+    && sudo apt-get install -y --no-install-recommends \
+    libxkbcommon-x11-dev libxcb-keysyms1-dev feh xdotool chromium-browser imagemagick \
+    rofi \
+    && cargo install --git http://github.com/antonyblakey/commando
+USER root
