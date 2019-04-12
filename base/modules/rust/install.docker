@@ -1,6 +1,9 @@
 USER dev
+ENV RUST_TOOLCHAIN=nightly-2019-04-12
 # Check here for the latest viable version: https://rust-lang.github.io/rustup-components-history/index.html
-RUN    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly-2019-03-15 \
+RUN    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} \
+    && rustup target add wasm32-unknown-unknown --toolchain ${RUST_TOOLCHAIN} \
+    && rustup target add wasm32-unknown-wasi --toolchain ${RUST_TOOLCHAIN} \
     && rustup component add rls rust-analysis rust-src rustfmt clippy \
     && sudo apt-get update \
     && sudo apt-get install -y --no-install-recommends pkg-config libssl-dev \
