@@ -10,7 +10,7 @@ else
 fi
 
 # Perl undoubtedly would be more concise
-ADDR=$(ping me | awk -e '/([0-9]{1,3}\.){3}[0-9]{1,3}/ { match($0,/(([0-9]{1,3}\.){3}[0-9]{1,3})/,arr); print arr[0] ; exit }' -)
+ADDR=$(ping me | gawk -e '/([0-9]{1,3}\.){3}[0-9]{1,3}/ { match($0,/(([0-9]{1,3}\.){3}[0-9]{1,3})/,arr); print arr[0] ; exit }' -)
 
 zparseopts -D                \
     e+:=environment          \

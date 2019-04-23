@@ -6,9 +6,5 @@ code --install-extension bungcip.better-toml
 TEMP=$(mktemp)
 SETTINGS='/home/dev/.config/Code/User/settings.json'
 cp $SETTINGS $TEMP
-cat <<EOF | jq -s '.[0] * .[1]' - $TEMP > $SETTINGS
-{
-    "rust-client.channel": "nightly-2019-03-15"
-}
-EOF
+echo '{"rust-client.channel": "'${DEVANYWARE_RUST_TOOLCHAIN}'"}' | jq -s '.[0] * .[1]' - $TEMP > $SETTINGS
 rm $TEMP

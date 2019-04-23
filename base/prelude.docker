@@ -53,6 +53,7 @@ USER dev
 RUN    git config --global http.sslVerify false \
     && mkdir -p ~/.local/bin
 
+ENV ZGEN_CHECK_DATE=2019-04-12
 ADD --chown=dev:dev https://api.github.com/repos/tarjoilija/zgen/tarball zgen.tar.gz
 RUN    mkdir ~/.zgen \
     && tar -zxf zgen.tar.gz --strip=1 -C ~/.zgen \
