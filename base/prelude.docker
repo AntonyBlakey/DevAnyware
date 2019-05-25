@@ -8,8 +8,10 @@ ENV LC_ALL=en_AU.UTF-8
 VOLUME [ "/host" ]
 
 RUN echo 'root:root' | chpasswd \
+    && ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+    tzdata \
     # These two needed specifically for powershell
     libicu60 libssl1.0.0 \
     gnupg2 apt-transport-https ca-certificates \
@@ -53,7 +55,7 @@ USER dev
 RUN    git config --global http.sslVerify false \
     && mkdir -p ~/.local/bin
 
-ENV ZGEN_CHECK_DATE=2019-04-12
+ENV ZGEN_CHECK_DATE=2019-04-29
 ADD --chown=dev:dev https://api.github.com/repos/tarjoilija/zgen/tarball zgen.tar.gz
 RUN    mkdir ~/.zgen \
     && tar -zxf zgen.tar.gz --strip=1 -C ~/.zgen \
