@@ -2,7 +2,7 @@
 
 if [ $# -eq 0 ] ; then
     image="${DEVANYWARE_USER_IMAGE_PREFIX}$(whoami)"
-elif [[ "$1" =~ '-.*' ]] ; then
+elif [[ "$1" =~ '^-.*' ]] ; then
     image="${DEVANYWARE_USER_IMAGE_PREFIX}$(whoami)"
 else
     image="${DEVANYWARE_IMAGE_PREFIX}$1"

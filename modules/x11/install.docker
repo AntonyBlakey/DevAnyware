@@ -1,0 +1,25 @@
+COPY --from=devanyware/builds/polybar /polybar /polybar
+
+RUN    apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    xorg tigervnc-standalone-server tigervnc-common xserver-xephyr \
+    xsel xclip compton xcape \
+    nitrogen \
+    lxterminal \
+    fonts-ubuntu fonts-roboto fonts-noto fonts-noto-mono fonts-firacode \
+    $(cat /polybar/dependencies) \
+    && cat /polybar/zshenv >> /etc/zsh/zshenv \
+    && rm /etc/fonts/conf.d/10-hinting-slight.conf \
+    && ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/ \
+    && ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/ \
+    && fc-cache -f
+
+# This requires the rust module.
+# There's not much point in GL acceleration when we're using VNC.
+
+# USER dev
+# RUN    git clone https://github.com/jwilm/alacritty \
+#     && cd alacritty \
+#     && cargo install --path alacritty \
+#     && rm -rf alacritty
+# USER root
