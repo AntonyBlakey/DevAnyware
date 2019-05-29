@@ -12,11 +12,11 @@ echo "START" \
 && pushd inputs/sdk-macos   && ./build.sh && popd \
 && pushd inputs/polybar     && ./build.sh && popd \
 \
-&& ./build-from-modules.sh devanyware/base        ubuntu:19.04           base x11 xmonad    \
-&& ./build-from-modules.sh devanyware/dev-base    devanyware/base        rust neovim vscode \
-&& ./build-from-modules.sh devanyware/dev-c       devanyware/dev-base    c python conan     \
-&& ./build-from-modules.sh devanyware/dev-web     devanyware/dev-base    javascript markup  \
-&& ./build-from-modules.sh devanyware/dev-full    devanyware/dev-c       javascript markup  \
+&& ./build-from-modules.sh devanyware/base        ubuntu:19.04           base x11 xmonad           \
+&& ./build-from-modules.sh devanyware/dev-base    devanyware/base        rust python neovim vscode \
+&& ./build-from-modules.sh devanyware/dev-c       devanyware/dev-base    c conan                   \
+&& ./build-from-modules.sh devanyware/dev-web     devanyware/dev-base    javascript markup         \
+&& ./build-from-modules.sh devanyware/dev-full    devanyware/dev-c       javascript markup         \
 \
 && echo "FINISH"
 
