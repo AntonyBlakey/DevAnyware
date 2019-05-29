@@ -11,8 +11,6 @@ RUN echo 'root:root' | chpasswd \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
     tzdata \
-    # These two needed specifically for powershell
-    # libicu60 libssl1.0.0 \
     gnupg2 apt-transport-https ca-certificates \
     sudo zsh tmux \
     psmisc htop curl wget jq sed gawk xz-utils bzip2 zip unzip git patch file \
@@ -22,25 +20,11 @@ RUN echo 'root:root' | chpasswd \
     # install docker client
     && curl --insecure -s https://download.docker.com/linux/static/stable/x86_64/docker-18.09.0.tgz \
     | tar zxf - --strip-components=1 -C /usr/bin docker/docker \
-    # install powershell
-    # && mkdir /powershell \
-    # && curl -L https://github.com/PowerShell/PowerShell/releases/download/v6.1.2/powershell-6.1.2-linux-x64.tar.gz \
-    # | tar zx -C /powershell \
-    # && chmod +x /powershell/pwsh \
-    # && ln -s /powershell/pwsh /usr/bin/pwsh \
     # create dev user
     && useradd -m -s /usr/bin/zsh dev \
     && echo 'ALL ALL = (ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers \
     # initialize zsh path
     && echo 'export path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)' >> /etc/zsh/zshenv
-
-# Need to do this before the resources are copied over
-# SHELL ["/usr/bin/pwsh", "-c"]
-# RUN   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted \
-#     # The line above doesn't work at the moment,
-#     # so I need to use -Force with Install-Module
-#     ; Install-Module -Name posh-git -Force \
-#     ; Install-Module -Name oh-my-posh -Force  
 
 SHELL ["/usr/bin/zsh", "-c"]
 

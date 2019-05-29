@@ -10,9 +10,6 @@ export DA_MODULES=($*)
 
 echo "Build $NAME from: $FROM with modules: $DA_MODULES"
 
-# Have to do this because git ignores empty dirs
-# [ -d resources-home-dev/work ] || mkdir resources-home-dev/work
-
 echo "$NAME build of $(date)" > build.log
 
 export LAST_LOG="none"
