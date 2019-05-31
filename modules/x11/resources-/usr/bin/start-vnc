@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+devanyware-init-docker-group.sh
+
 exec tigervncserver :0 -localhost no --I-KNOW-THIS-IS-INSECURE -fg -cleanstale \
     -geometry 2560x1440 -depth 24 -dpi 96 \
     -rfbport 5900 -SecurityTypes None \
