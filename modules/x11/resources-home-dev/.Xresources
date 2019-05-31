@@ -1,0 +1,41 @@
+!! Colorscheme
+
+*.background: #001627
+*.foreground: #d6deeb
+*.cursorColor: #ffffff
+
+*.color0: #011627
+*.color1: #ef5350
+*.color2: #22da6e
+*.color3: #addb67
+*.color4: #82aaff
+*.color5: #c792ea
+*.color6: #21c7a8
+*.color7: #ffffff
+
+*.color8: #575656
+*.color9: #ef5350
+*.color10: #22da6e
+*.color11: #ffeb95
+*.color12: #82aaff
+*.color13: #c792ea
+*.color14: #75dbca
+*.color15: #ffffff
+
+*.font: xft:Operator Mono SSm:style=Book:size=8
+*.italicFont: xft:Operator Mono SSm:style=Book Italic:size=8
+*.boldFont: xft:Operator Mono SSm:style=Bold:size=8
+*.boldItalicFont: xft:Operator Mono SSm:style=Bold Italic:size=8
+
+!! URxvt Appearance
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.internalBorder: 8
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
