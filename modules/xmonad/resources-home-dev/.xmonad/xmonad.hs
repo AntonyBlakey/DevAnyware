@@ -30,8 +30,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Config.Desktop
 import XMonad.Util.SpawnOnce
 
-myTerminal          = "lxterminal"
--- myTerminal          = "/home/dev/.cargo/bin/alacritty"
+myTerminal          = "rxvt"
 myFocusFollowsMouse = False
 myClickJustFocuses  = False
 

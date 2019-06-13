@@ -12,7 +12,7 @@ RUN echo 'root:root' | chpasswd \
     && apt-get install -y --no-install-recommends \
     tzdata \
     gnupg2 apt-transport-https ca-certificates \
-    sudo zsh tmux \
+    sudo zsh tmux inetutils-ping telnet \
     psmisc htop curl wget jq sed gawk xz-utils bzip2 zip unzip git patch file \
     less neovim ranger \
     && git config --global http.sslVerify false \
@@ -27,6 +27,8 @@ RUN echo 'root:root' | chpasswd \
     # initialize zsh path
     && echo 'export path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)' >> /etc/zsh/zshenv
 
+# rxvt needs this set
+ENV SHELL zsh 
 SHELL ["/usr/bin/zsh", "-c"]
 
 COPY --chown=dev:dev modules/base/resources-home-dev/ /home/dev/

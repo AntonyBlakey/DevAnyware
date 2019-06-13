@@ -1,5 +1,5 @@
 USER dev
-ENV DEVANYWARE_RUST_TOOLCHAIN=nightly-2019-05-22
+ENV DEVANYWARE_RUST_TOOLCHAIN=nightly-2019-06-11
 # Check here for the latest viable version: https://rust-lang.github.io/rustup-components-history/index.html
 RUN    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${DEVANYWARE_RUST_TOOLCHAIN} \
     && rustup target add wasm32-wasi --toolchain ${DEVANYWARE_RUST_TOOLCHAIN} \

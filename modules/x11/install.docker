@@ -5,7 +5,7 @@ RUN    apt-get update \
     xorg tigervnc-standalone-server tigervnc-common xserver-xephyr \
     xsel xclip compton xcape \
     nitrogen \
-    lxterminal \
+    rxvt-unicode \
     fonts-ubuntu fonts-roboto fonts-noto fonts-noto-mono fonts-firacode \
     $(cat /polybar/dependencies) \
     && cat /polybar/zshenv >> /etc/zsh/zshenv \

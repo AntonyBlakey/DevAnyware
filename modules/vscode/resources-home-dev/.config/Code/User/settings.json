@@ -1,6 +1,6 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Night Owl",
+  "workbench.colorTheme": "Night Owl Light",
   "window.restoreFullscreen": true,
   "window.titleBarStyle": "native",
   "editor.fontFamily": "'Fira Code'",
@@ -39,15 +39,7 @@
     "*.docker": "dockerfile",
     "zshenv": "shellscript"
   },
-  "powershell.integratedConsole.showOnStartup": false,
   "workbench.sideBar.location": "right",
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#000C1D",
-    "activityBar.border": "#102a44",
-    "sideBar.background": "#001122",
-    "sideBar.border": "#102a44",
-    "sideBar.foreground": "#8BADC1"
-  },
   "diffEditor.ignoreTrimWhitespace": true,
   "gitlens.views.repositories.files.layout": "auto",
   "gitlens.views.fileHistory.enabled": true,
@@ -59,5 +51,6 @@
   "prettier.printWidth": 140,
   "npm.enableScriptExplorer": true,
   "reason_language_server.format_width": 140,
-  "python.pythonPath": "/usr/bin/python3"
+  "python.pythonPath": "/usr/bin/python3",
+  "bracket-pair-colorizer-2.colors": ["Orange", "Orchid", "LightSkyBlue", "Green"]
 }

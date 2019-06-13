@@ -1,5 +1,3 @@
-!! Colorscheme
-
 *.background: #001627
 *.foreground: #d6deeb
 *.cursorColor: #ffffff
@@ -22,12 +20,11 @@
 *.color14: #75dbca
 *.color15: #ffffff
 
-*.font: xft:Operator Mono SSm:style=Book:size=8
-*.italicFont: xft:Operator Mono SSm:style=Book Italic:size=8
-*.boldFont: xft:Operator Mono SSm:style=Bold:size=8
-*.boldItalicFont: xft:Operator Mono SSm:style=Bold Italic:size=8
+*.font: xft:Noto Sans Mono:style=Regular:size=9
+*.italicFont: xft:Noto Sans Mono:style=Regular:size=9
+*.boldFont: xft:Noto Sans Mono:style=Bold:size=9
+*.boldItalicFont: xft:Noto Sans Mono:style=Bold:size=9
 
-!! URxvt Appearance
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 8
