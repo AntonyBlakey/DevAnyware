@@ -1,1 +1,0 @@
-export path=($HOME/.cargo/bin $path)

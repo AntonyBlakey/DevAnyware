@@ -1,5 +1,6 @@
 RUN apt-get update \
     # Neovim already installed, just not configured
     && apt-get install -y --no-install-recommends fonts-vlgothic \
-    && pip3 install neovim \
-    && fc-cache -f
+    && pip install neovim \
+    && fc-cache -f \
+    && vim -es +PlugInstall +UpdateRemotePlugins +q -u ~/.config/nvim/init.vim || true

@@ -26,31 +26,15 @@ log/start() {
 (
     echo FROM $FROM
     echo
-
-    log/start "Preludes"
-
-    for n in $DA_MODULES ; do 
-        m=modules/$n
-        echo "# $m"
-        if [ -f $m/prelude.docker ] ; then
-            log/start "Prelude $m"
-            cat $m/prelude.docker
-            echo
-        fi
-    done
+    echo "ENV DEBIAN_FRONTEND=noninteractive"
 
     log/start "Install Modules"
-    echo "USER root"
 
     for n in $DA_MODULES ; do 
         m=modules/$n
         if [ -d $m/resources- ] ; then
             log/start "Install $m"
             echo "COPY $m/resources-/ /"
-        fi
-        if [ -d $m/resources-home-dev ] ; then
-            log/start "Install $m"
-            echo "COPY --chown=dev:dev $m/resources-home-dev/ /home/dev/"
         fi
         if [ -f $m/install.docker ] ; then
             log/start "Install $m"
@@ -59,19 +43,8 @@ log/start() {
         fi
     done
 
-    log/start "Configure Modules"
-    echo "USER dev"
-
-    for n in $DA_MODULES ; do 
-        m=modules/$n
-        if [ -f $m/configure.sh ] ; then
-            log/start "Configure $m"
-            echo "COPY --chown=dev:dev $m/configure.sh configure.sh"
-            echo 'RUN source configure.sh && rm configure.sh'
-        fi
-    done
-
     echo
+    echo "ENV DEBIAN_FRONTEND=dialog"
 
 ) > Dockerfile
 

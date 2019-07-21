@@ -20,7 +20,7 @@ xmodmap -e 'add mod3 = Hyper_R'
 # tigervncconfig -set RemapKeys="0x5c->0xffee"   # backslash -> Hyper_R 
 tigervncconfig -nowin & # Handles C/C/P
 
-$HOME/.config/commando/launch.sh &
+# $HOME/.config/commando/launch.sh &
 nitrogen --random --set-scaled $HOME/.config/wallpaper &
 $HOME/.config/polybar/launch.sh &
 exec xmonad

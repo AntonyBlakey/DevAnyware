@@ -1,11 +1,14 @@
-USER dev
-ENV DEVANYWARE_RUST_TOOLCHAIN=nightly-2019-06-11
 # Check here for the latest viable version: https://rust-lang.github.io/rustup-components-history/index.html
-RUN    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${DEVANYWARE_RUST_TOOLCHAIN} \
-    && rustup target add wasm32-wasi --toolchain ${DEVANYWARE_RUST_TOOLCHAIN} \
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH=/usr/local/cargo/bin:$PATH \
+    RUST_VERSION=nightly-2019-07-18
+
+RUN    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VERSION} \
+    && rustup target add wasm32-wasi --toolchain ${RUST_VERSION} \
+    && rustup target add wasm32-unknown-unknown --toolchain ${RUST_VERSION} \
     && rustup component add rls rust-analysis rust-src rustfmt clippy \
-    && sudo apt-get update \
-    && sudo apt-get install -y --no-install-recommends pkg-config libssl-dev \
-    && cargo install cargo-make cargo-expand cargo-script
-# && cargo install cargo-tree cargo-modules cargo-outdated cargo-cache cargo-make cargo-script cargo-generate cargo-expand
-USER root
+    && apt-get update \
+    && apt-get install -y --no-install-recommends pkg-config libssl-dev \
+    && cargo install cargo-expand \
+    && cargo install cargo-make

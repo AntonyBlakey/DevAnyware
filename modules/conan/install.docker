@@ -1,4 +1,2 @@
-USER dev
 RUN    pip install conan compdb scan-build \
     && conan profile new default --detect
-USER root

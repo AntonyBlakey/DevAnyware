@@ -1,0 +1,48 @@
+RUN    dpkg --add-architecture i386 \
+    && apt-get update && apt-get install -y --no-install-recommends locales
+
+RUN locale-gen "en_AU.UTF-8"
+ENV LC_ALL=en_AU.UTF-8
+
+VOLUME [ "/host" ]
+
+RUN echo 'root:root' | chpasswd \
+    && ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
+    && apt-get update \
+    && apt-get install -y \
+    tzdata \
+    apt-utils iproute2 procps lsb-release \
+    gnupg2 apt-transport-https ca-certificates \
+    zsh inetutils-ping telnet \
+    psmisc htop curl wget jq sed gawk xz-utils bzip2 zip unzip git patch file \
+    less neovim \
+    && git config --global http.sslVerify false \
+    && usermod -s /usr/bin/zsh root \
+    # install docker client
+    && curl --insecure -s https://download.docker.com/linux/static/stable/x86_64/docker-18.09.0.tgz \
+    | tar zxf - --strip-components=1 -C /usr/bin docker/docker \
+    # initialize zsh path
+    && echo 'export path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)' >> /etc/zsh/zshenv \
+    && mkdir ~/work \
+    && git config --global http.sslVerify false
+
+WORKDIR /root/work
+
+# rxvt needs this set
+# ENV SHELL zsh 
+SHELL ["/usr/bin/zsh", "-c"]
+CMD ["/usr/bin/zsh"]
+
+ENV ZGEN_CHECK_DATE=2019-07-21
+ADD https://api.github.com/repos/tarjoilija/zgen/tarball zgen.tar.gz
+RUN    mkdir ~/.zgen \
+    && tar -zxf zgen.tar.gz --strip=1 -C ~/.zgen \
+    && rm zgen.tar.gz \
+    # Sourcing .zshrc forces it to initialize and download the modules
+    && source ~/.zshrc
+
+ADD https://api.github.com/repos/junegunn/fzf/tarball fzf.tar.gz
+RUN    mkdir ~/.fzf \
+    && tar -zxf fzf.tar.gz --strip=1 -C ~/.fzf \
+    && rm fzf.tar.gz \
+    && ~/.fzf/install --all

@@ -1,3 +1,5 @@
+export SHELL=zsh
+
 ######## vim
 
 export VISUAL=nvim
