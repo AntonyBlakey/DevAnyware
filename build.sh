@@ -10,15 +10,15 @@ for input in $inputs ; do
     (cd inputs/$input && ./build.sh)
 done
 
-docker_modules=(base x11 xmonad elixir haskell java go lisp markup c python conan neovim javascript rust)
-last_docker_module='ubuntu:19.04'
+docker_modules=(base x11 xmonad elixir haskell java go pandoc racket sbcl c python conan neovim javascript clojurescript rust)
+previous_docker_module='ubuntu:19.04'
 
 for docker_module in $docker_modules ; do
     name=devanyware/$docker_module
-    ./build-from-modules.sh $name $last_docker_module $docker_module
-    last_docker_module=$name
+    ./build-from-modules.sh $name $previous_docker_module $docker_module
+    previous_docker_module=$name
 done
 
-docker tag $last_docker_module devanyware/full
+docker tag $previous_docker_module devanyware/full
 
 echo "FINISH"

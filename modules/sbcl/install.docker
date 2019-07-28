@@ -1,0 +1,3 @@
+ENV SBCL_VERSION=1.5.4
+RUN    curl -L http://prdownloads.sourceforge.net/sbcl/sbcl-${SBCL_VERSION}-x86-64-linux-binary.tar.bz2 | tar jxf - \
+    && pushd sbcl-* && sh install.sh && popd && rm -rf sbcl-*
