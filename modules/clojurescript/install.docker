@@ -1,16 +1,16 @@
 RUN yarn global add shadow-cljs
 
-# ENV CLOJURE_VERSION=1.10.1.466
-# ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/local/bin/lein
-# RUN    chmod +rwx /usr/local/bin/lein \
-#     && curl -O --insecure -s https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh \
-#     && chmod +x linux-install-${CLOJURE_VERSION}.sh \
-#     && ./linux-install-${CLOJURE_VERSION}.sh \
-#     && rm linux-install-${CLOJURE_VERSION}.sh
+ENV CLOJURE_VERSION=1.10.1.466
+ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/local/bin/lein
+RUN    chmod +rwx /usr/local/bin/lein \
+    && curl -O --insecure -s https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh \
+    && chmod +x linux-install-${CLOJURE_VERSION}.sh \
+    && ./linux-install-${CLOJURE_VERSION}.sh \
+    && rm linux-install-${CLOJURE_VERSION}.sh
 
-# ENV BOOT_AS_ROOT=yes
-# ADD https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh /usr/local/bin/boot
-# RUN    chmod 755 /usr/local/bin/boot \
-#     && boot -u \
-#     && clojure < /dev/null \
-#     && lein
+ENV BOOT_AS_ROOT=yes
+ADD https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh /usr/local/bin/boot
+RUN    chmod 755 /usr/local/bin/boot \
+    && boot -u \
+    && clojure < /dev/null \
+    && lein
