@@ -33,7 +33,7 @@ WORKDIR /root/work
 SHELL ["/usr/bin/zsh", "-c"]
 CMD ["/usr/bin/zsh"]
 
-ENV ZGEN_CHECK_DATE=2019-07-26
+ENV ZGEN_CHECK_DATE=2019-08-02
 ADD https://api.github.com/repos/tarjoilija/zgen/tarball zgen.tar.gz
 RUN    mkdir ~/.zgen \
     && tar -zxf zgen.tar.gz --strip=1 -C ~/.zgen \
