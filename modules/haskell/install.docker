@@ -1,1 +1,4 @@
-RUN curl -sSf https://get.haskellstack.org/ | sh
+RUN    apt-get update \
+    && apt-get install -y --no-install-recommends haskell-platform \
+    && cabal update \
+    && cabal install intero

@@ -1,3 +1,6 @@
 RUN    apt-get update \
-    && apt-get install -y \
-    xmonad
+    && apt-get install -y libx11-dev libxinerama-dev libxext-dev libxrandr-dev libxss-dev libxft-dev \
+    && git clone https://github.com/Linkuistics/xmonad.git \
+    && (cd xmonad ; cabal install) \
+    && git clone https://github.com/xmonad/xmonad-contrib.git \
+    && (cd xmonad-contrib ; cabal install)

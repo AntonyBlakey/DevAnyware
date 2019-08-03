@@ -14,6 +14,6 @@ RUN apt-get update \
     && ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d/ \
     && ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/ \
     && fc-cache -f \
-    && update-alternatives --install /usr/share/icons/default/index.theme x-cursor-theme /usr/share/icons/OSX-ElCap/cursor.theme 90 \
+    && update-alternatives --install /usr/share/icons/default/index.theme x-cursor-theme /usr/share/icons/OSX-ElCap/cursor.theme 100 \
     && mkdir /var/run/sshd \
     && echo AddressFamily inet >> /etc/ssh/sshd_config
