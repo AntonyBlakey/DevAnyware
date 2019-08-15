@@ -1,0 +1,7 @@
+xmodmap -e 'keycode any = Hyper_L'
+xmodmap -e 'keycode any = Hyper_R'
+
+xmodmap -e 'remove mod4 = Hyper_L'
+xmodmap -e 'remove mod4 = Hyper_R'
+xmodmap -e 'add mod3 = Hyper_L'
+xmodmap -e 'add mod3 = Hyper_R'
