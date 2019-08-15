@@ -10,8 +10,8 @@ for input in $inputs ; do
     (cd inputs/$input && ./build.sh)
 done
 
-# docker_modules=(base x11 c python conan neovim javascript rust haskell xmonad)
 docker_modules=(base x11 c python conan elixir go racket sbcl java haskell pandoc xmonad neovim javascript clojurescript rust)
+# docker_modules=(base x11 c python conan java haskell xmonad neovim javascript)
 previous_docker_module='ubuntu:19.04'
 
 for docker_module in $docker_modules ; do

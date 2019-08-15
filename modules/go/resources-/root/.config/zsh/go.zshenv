@@ -1,0 +1,1 @@
+export path=(/usr/local/go/bin $path)

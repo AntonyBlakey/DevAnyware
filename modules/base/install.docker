@@ -29,7 +29,8 @@ RUN echo 'root:root' | chpasswd \
 WORKDIR /root/work
 
 # rxvt needs this set
-# ENV SHELL zsh 
+ENV SHELL=/usr/bin/zsh 
+
 SHELL ["/usr/bin/zsh", "-c"]
 CMD ["/usr/bin/zsh"]
 

@@ -4,11 +4,13 @@ COPY --from=devanyware/builds/ccls /ccls /ccls
 COPY --from=devanyware/builds/sdk-windows:10.0.17763.0 /windows /windows
 COPY --from=devanyware/builds/sdk-macos:10.11 /macos /macos
 
-RUN    cat /cmake/zshenv >> /etc/zsh/zshenv \
-    && cat /llvm/zshenv >> /etc/zsh/zshenv \
-    && cat /ccls/zshenv >> /etc/zsh/zshenv \
-    && cat /windows/zshenv >> /etc/zsh/zshenv \
-    && cat /macos/zshenv >> /etc/zsh/zshenv \
+ENV PATH=/cmake/bin:/llvm/bin:/ccls/bin:/windows/bin:/macos/bin:$PATH
+
+RUN    mv /cmake/zshenv /root/.config/zsh/cmake.zshenv \ 
+    && mv /llvm/zshenv /root/.config/zsh/llvm.zshenv \ 
+    && mv /ccls/zshenv /root/.config/zsh/ccls.zshenv \ 
+    && mv /windows/zshenv /root/.config/zsh/windows.zshenv \ 
+    && mv /macos/zshenv /root/.config/zsh/macos.zshenv \ 
     && apt-get update \
     && apt-get install -y --no-install-recommends \
     $(cat /cmake/dependencies) \

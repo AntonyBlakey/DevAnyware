@@ -1,8 +1,10 @@
 ENV GO_VERSION=1.12.7
+
 RUN    curl -L https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz | tar zx --directory /usr/local \
-    && echo 'export path=(/usr/local/go/bin $path)' >> /etc/zsh/zshenv \
     && mkdir ~/work/go \
     && echo "export GOPATH=$GOPATH" >> .zshrc
+
+ENV PATH=/usr/local/go/bin:$PATH
 
 RUN    go get -u -v github.com/ramya-rao-a/go-outline \
     && go get -u -v github.com/acroca/go-symbols \

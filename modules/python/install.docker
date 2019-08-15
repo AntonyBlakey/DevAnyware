@@ -1,4 +1,5 @@
-ENV PYTHON_VERSION=3.7.4
+ENV PYTHON_VERSION=3.7.4 \
+    PATH=/root/.pyenv/bin:$PATH
 
 RUN    apt-get update \
     && apt-get install -y --no-install-recommends \
