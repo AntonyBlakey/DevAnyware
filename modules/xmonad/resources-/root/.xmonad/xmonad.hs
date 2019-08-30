@@ -16,7 +16,6 @@ import XMonad.Operations
 import XMonad.ManageHook
 import XMonad.Layout.Reflect
 import XMonad.Layout.Spacing
-import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Grid
 import XMonad.Layout.Cross
 import XMonad.Layout.BorderResize
@@ -48,7 +47,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [ ((modMask .|. mod1Mask,  xK_q    ), io (exitWith ExitSuccess))
-  , ((modMask,               xK_g    ), goToSelected def)
+  , ((modMask,               xK_n    ), goToSelected def)
+  , ((modMask,               xK_slash), spawn "firefox 'http://confluence.soops.intern/display/DA/Welcome+to+DevAnyware+1.0.0'") 
   , ((modMask,               xK_Right), windowGo R False)
   , ((modMask,               xK_Left ), windowGo L False)
   , ((modMask,               xK_Up   ), windowGo U False)
@@ -67,7 +67,7 @@ myMouse conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myLayout = spacingWithEdge 5 myLayout2
   where
-    myLayout2 = (reflectHoriz tiled) ||| (Mirror tiled) ||| Full ||| Grid ||| simpleFloat
+    myLayout2 = (reflectHoriz tiled) ||| (Mirror tiled) ||| Full ||| Grid
       where
          -- default tiling algorithm partitions the screen into two panes
          tiled   = Tall nmaster delta ratio
@@ -115,10 +115,12 @@ myManageHook = composeAll
 -- myStartupHook = do
 --   spawnOnce "$HOME/.config/polybar/launch.sh"
 
+myNavigation2DConfig = def { defaultTiledNavigation = sideNavigation, floatNavigation = sideNavigation }
+
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 main = do
-    xmonad $ withNavigation2DConfig def $ desktopConfig {
+    xmonad $ withNavigation2DConfig myNavigation2DConfig $ desktopConfig {
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,
