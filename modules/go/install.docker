@@ -1,4 +1,5 @@
-ENV GO_VERSION=1.12.7
+# https://golang.org/dl/
+ENV GO_VERSION=1.13
 
 RUN    curl -L https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz | tar zx --directory /usr/local \
     && mkdir ~/work/go \

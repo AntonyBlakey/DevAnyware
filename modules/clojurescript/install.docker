@@ -1,6 +1,7 @@
 RUN yarn global add shadow-cljs
 
-ENV CLOJURE_VERSION=1.10.1.466
+# https://clojure.org/guides/getting_started
+ENV CLOJURE_VERSION=1.10.1.469
 ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/local/bin/lein
 RUN    chmod +rwx /usr/local/bin/lein \
     && curl -O --insecure -s https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh \
