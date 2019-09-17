@@ -19,6 +19,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Grid
 import XMonad.Layout.Cross
 import XMonad.Layout.BorderResize
+import XMonad.Layout.NoBorders
 import XMonad.Actions.Navigation2D
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.Layout.Fullscreen as FS
@@ -36,6 +37,31 @@ import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Hooks.ManageDocks
 import XMonad.Config.Desktop
 import XMonad.Util.SpawnOnce
+
+import XMonad.Layout.Decoration
+import XMonad.Util.Types
+
+data SideDecoration a = SideDecoration Bool
+  deriving (Show, Read)
+
+instance Eq a => DecorationStyle SideDecoration a where
+  shrink b (Rectangle _ _ dw dh) (Rectangle x y w h) = Rectangle (x + fi dw) y (w - dw) h
+  pureDecoration b dw dh _ st _ (win, Rectangle x y w h) = Just $ Rectangle x y dw h
+
+myTheme :: Theme
+myTheme = def
+  { activeColor = "#00bbee"
+  , inactiveColor = "#bbbbbb"
+  , activeBorderColor = "#555555"
+  , inactiveBorderColor = "#555555"
+  , decoWidth = 10
+  }
+
+-- data MyFloatDec a = MyFloatDec 
+-- instance FloatClass MyFloatDec a
+
+myDecorate :: Eq a => l a -> ModifiedLayout (Decoration SideDecoration DefaultShrinker) l a
+myDecorate = decoration shrinkText myTheme (SideDecoration True)
 
 myTerminal          = "rxvt"
 myFocusFollowsMouse = False
@@ -65,7 +91,7 @@ myMouse conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, button1), (\w -> focus w >> Flex.mouseWindow Flex.resize w >> afterDrag (snapMagicResize [L, R, U, D] (Just 32) (Just 32) w) >> windows W.shiftMaster))
   ]
 
-myLayout = spacingWithEdge 5 myLayout2
+myLayout = myDecorate (noBorders (spacingWithEdge 5 myLayout2))
   where
     myLayout2 = (reflectHoriz tiled) ||| (Mirror tiled) ||| Full ||| Grid
       where
@@ -125,8 +151,8 @@ main = do
         focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,
         borderWidth        = 3,
-        normalBorderColor  = "#aaa",
-        focusedBorderColor = "#0099ff",
+        normalBorderColor  = "#bbbbbb",
+        focusedBorderColor = "#00bbee",
         modMask            = myModMask,
         workspaces         = myWorkspaces,
         keys               = myKeys <+> keys XMonad.def,
