@@ -2,7 +2,7 @@
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=nightly-2019-09-24
+    RUST_VERSION=nightly-2019-09-28
 
 RUN    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VERSION} \
     && rustup target add wasm32-wasi --toolchain ${RUST_VERSION} \
