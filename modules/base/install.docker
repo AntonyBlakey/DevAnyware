@@ -34,7 +34,7 @@ ENV SHELL=/usr/bin/zsh
 SHELL ["/usr/bin/zsh", "-c"]
 CMD ["/usr/bin/zsh"]
 
-ENV ZGEN_CHECK_DATE=2019-09-28
+ENV ZGEN_CHECK_DATE=2019-10-10
 ADD https://api.github.com/repos/tarjoilija/zgen/tarball zgen.tar.gz
 RUN    mkdir ~/.zgen \
     && tar -zxf zgen.tar.gz --strip=1 -C ~/.zgen \
