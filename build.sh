@@ -4,7 +4,7 @@ set +o errexit ; set +o pipefail
 
 echo "START" 
 
-inputs=(base llvm cmake ccls sdk-windows sdk-macos polybar)
+inputs=(base llvm cmake sdk-windows sdk-macos polybar)
 
 for input in $inputs ; do 
     (cd inputs/$input && ./build.sh)

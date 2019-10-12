@@ -1,6 +1,5 @@
 COPY --from=devanyware/builds/cmake /cmake /cmake
 COPY --from=devanyware/builds/llvm /llvm /llvm
-COPY --from=devanyware/builds/ccls /ccls /ccls
 COPY --from=devanyware/builds/sdk-windows:10.0.17763.0 /windows /windows
 COPY --from=devanyware/builds/sdk-macos:10.11 /macos /macos
 
@@ -8,7 +7,6 @@ ENV PATH=/cmake/bin:/llvm/bin:/ccls/bin:/windows/bin:/macos/bin:$PATH
 
 RUN    mv /cmake/zshenv /root/.config/zsh/cmake.zshenv \ 
     && mv /llvm/zshenv /root/.config/zsh/llvm.zshenv \ 
-    && mv /ccls/zshenv /root/.config/zsh/ccls.zshenv \ 
     && mv /windows/zshenv /root/.config/zsh/windows.zshenv \ 
     && mv /macos/zshenv /root/.config/zsh/macos.zshenv \ 
     && apt-get update \
@@ -16,7 +14,6 @@ RUN    mv /cmake/zshenv /root/.config/zsh/cmake.zshenv \
     $(cat /cmake/dependencies) \
     $(cat /llvm/dependencies) \
     $(cat /llvm/dependencies-i386) \
-    $(cat /ccls/dependencies) \
     $(cat /windows/dependencies) \
     $(cat /macos/dependencies) \
     make ninja-build
