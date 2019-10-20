@@ -2,4 +2,4 @@ RUN    curl -sSf https://packages.erlang-solutions.com/erlang-solutions_1.0_all.
     && dpkg -i erlang-solutions_1.0_all.deb \
     && rm erlang-solutions_1.0_all.deb \
     && apt-get update \
-    && apt-get install -y --no-install-recommends esl-erlang elixir 
+    && apt-get install -y --no-install-recommends erlang erlang-base-hipe erlang-doc elixir 

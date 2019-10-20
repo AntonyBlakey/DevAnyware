@@ -18,8 +18,8 @@ RUN echo 'root:root' | chpasswd \
     less neovim \
     && git config --global http.sslVerify false \
     && usermod -s /usr/bin/zsh root \
-    # install docker client
-    && curl --insecure -s https://download.docker.com/linux/static/stable/x86_64/docker-19.03.2.tgz \
+    # install docker client https://download.docker.com/linux/static/stable/x86_64/
+    && curl --insecure -s https://download.docker.com/linux/static/stable/x86_64/docker-19.03.4.tgz \
     | tar zxf - --strip-components=1 -C /usr/bin docker/docker \
     # initialize zsh path
     && echo 'export path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)' >> /etc/zsh/zshenv \
@@ -34,7 +34,7 @@ ENV SHELL=/usr/bin/zsh
 SHELL ["/usr/bin/zsh", "-c"]
 CMD ["/usr/bin/zsh"]
 
-ENV ZGEN_CHECK_DATE=2019-10-10
+ENV ZGEN_CHECK_DATE=2019-10-20
 ADD https://api.github.com/repos/tarjoilija/zgen/tarball zgen.tar.gz
 RUN    mkdir ~/.zgen \
     && tar -zxf zgen.tar.gz --strip=1 -C ~/.zgen \

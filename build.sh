@@ -11,7 +11,7 @@ for input in $inputs ; do
 done
 
 docker_modules=(base x11 c python conan elixir go racket sbcl java haskell pandoc xmonad neovim javascript clojurescript rust)
-# docker_modules=(base x11 c python conan java haskell xmonad neovim javascript)
+# docker_modules=(base x11 c python conan java haskell xmonad neovim javascript rust)
 previous_docker_module='ubuntu:19.04'
 
 for docker_module in $docker_modules ; do
