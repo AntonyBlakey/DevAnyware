@@ -1,5 +1,5 @@
 # https://www.python.org/downloads/
-ENV PYTHON_VERSION=3.7.4 \
+ENV PYTHON_VERSION=3.8.0 \
     PATH=/root/.pyenv/bin:$PATH
 
 RUN    apt-get update \
